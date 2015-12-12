@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.chioy.mybatis.UserMapper">
+  	<select id="selectById" parameterType="int" resultType="User">
+  		use resume select * from users where uid=#{id}
+  	</select>
+  	<select id="selectAll" resultType="User">
+  		use resume select * from users		
+  	</select>
+  	<insert id="addUser" parameterType="User">
+  		use resume insert into users(email,username,userpswd,qid,answer)
+  		values(
+  			#{email},
+  			#{username},
+  			#{userpswd},
+  			#{qid},
+  			#{answer}
+  		);
+  	</insert>
+  	<update id="updateUser" parameterType="User">
+  		use resume
+  		update users set
+	  		username=#{username},
+	  		userpswd=#{userpswd},
+	  		qid=#{qid},
+	  		answer=#{answer},
+	  		email=#{email}
+	  	where uid = #{uid}
+  	</update>
+  	<delete id="deleteById">
+  		use resume
+  		delete users where uid = #{uid}
+  	</delete>
+  </mapper>
