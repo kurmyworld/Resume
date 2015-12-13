@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.chioy.mybatis.ResumeMapper">
+  	<select id="selectAll" resultType="Resume">
+  		use resume
+  		select * from resumes
+  	</select>
+  	
+  	<select id="selectByUid" resultType="Resume">
+  		use resume
+  		select * from resumes
+  		where 
+  		  uid	=	#{uid}
+  	</select>
+  	
+  	<select id="selectByRid" resultType="Resume">
+  		use resume
+  		select * from resume
+  		where
+  		  rid	=	#{rid}
+  	</select>
+  	
+  	<insert id="addResume" parameterType="Resume">
+  		use resume
+  		insert into resumes(uid,pic,name,age,sex,profession,ed_exp,wk_exp,profile)
+  		values(
+	  		#{uid},
+	  		#{pic},
+	  		#{name},
+	  		#{age},
+	  		#{sex},
+	  		#{profession},
+	  		#{ed_exp},
+	  		#{wk_exp},
+	  		#{profile}
+  		)
+  	</insert>
+  	
+  	<update id="updateResume" parameterType="Resume">
+  		use resume
+  		update resumes set
+	  		 pic	=	#{pic},
+	  		name	=	#{name},
+	  		 age	=	#{age},
+	  		 sex	=	#{sex},
+	  profession	=	#{profession},
+	 	  ed_exp	=	#{ed_exp},
+	  	  wk_exp	=	#{wk_exp},
+	  	 profile	=	#{profile}
+	       where
+	         uid	=	#{uid}
+  	</update>
+
+  </mapper>

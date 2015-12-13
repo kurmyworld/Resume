@@ -12,7 +12,7 @@ public class UserDaoTest {
 	@Test
 	public void testAddUser(){
 		UserDao userDao = new UserDao();
-		User user = new User("chioy@foxmail.com", "choy", "chioy@test", 1, "i don't know");
+		User user = new User(-1, "kkkkk@foxmail.com", "choy", "kkk@password", 1, "bbbb");
 		int add = userDao.add(user);
 		System.out.println(add);
 	}

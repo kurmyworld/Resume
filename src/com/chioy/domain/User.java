@@ -7,19 +7,25 @@ public class User {
 	private String userpswd;
 	private int qid;
 	private String answer;
-	public User(String email, String username, String userpswd,
+	private int rid;
+	
+	
+	public User() {
+		super();
+	}
+	
+	public User(int uid, String email, String username, String userpswd,
 			int qid, String answer) {
 		super();
-		this.uid = -1;
+		this.uid = uid;
 		this.email = email;
 		this.username = username;
 		this.userpswd = userpswd;
 		this.qid = qid;
 		this.answer = answer;
 	}
-	public User() {
-		super();
-	}
+
+
 	/**
 	 * @return the uid
 	 */
@@ -86,12 +92,26 @@ public class User {
 	public String getAnswer() {
 		return answer;
 	}
+	
+	/**
+	 * @return the rid
+	 */
+	public int getRid() {
+		return rid;
+	}
+	/**
+	 * @param rid the rid to set
+	 */
+	public void setRid(int rid) {
+		this.rid = rid;
+	}
 	/**
 	 * @param answer the answer to set
 	 */
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -99,7 +119,7 @@ public class User {
 	public String toString() {
 		return "User [uid=" + uid + ", email=" + email + ", username="
 				+ username + ", userpswd=" + userpswd + ", qid=" + qid
-				+ ", answer=" + answer + "]";
+				+ ", answer=" + answer + ", rid=" + rid + "]";
 	}
 	
 }

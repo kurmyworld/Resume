@@ -19,10 +19,8 @@
     </environments>
     <mappers>
     	<mapper resource="com/chioy/mybatis/UserMapper.xml"/>
-    	<!-- 
-    	<mapper class="com.chioy.mybatis.QuestionMapperInterface"/>
-    	 -->
-    	 <mapper resource="com/chioy/mybatis/QuestionMapper.xml"/>
+    	<mapper resource="com/chioy/mybatis/QuestionMapper.xml"/>
     	<mapper resource="com/chioy/mybatis/UserInfoMapper.xml"/>
+    	<mapper resource="com/chioy/mybatis/ResumeMapper.xml"/>
     </mappers>
 </configuration>

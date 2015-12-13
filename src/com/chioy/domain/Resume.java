@@ -131,10 +131,10 @@ public class Resume {
 	public void setProfile(String profile) {
 		this.profile = profile;
 	}
-	public Resume(int rid, int uid, String pic, String name, int age, int sex,
+	public Resume(int uid, String pic, String name, int age, int sex,
 			String profession, String ed_exp, String wk_exp, String profile) {
 		super();
-		this.rid = rid;
+		this.rid = -1;
 		this.uid = uid;
 		this.pic = pic;
 		this.name = name;
