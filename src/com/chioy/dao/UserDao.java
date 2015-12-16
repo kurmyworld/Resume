@@ -24,6 +24,14 @@ public class UserDao {
 		session.close();
 		return user;
 	}
+	public User selectByEmail(String email){
+		String alter = "selectByEmail";
+		SqlSession session = MybatisUtils.getSqlSession();
+		String statement = "com.chioy.mybatis.UserMapper."+alter;
+		User user = session.selectOne(statement, email);
+		session.close();
+		return user;
+	}
 	public List<User> selectAll(){
 		String alter = "selectAll";
 		SqlSession session = MybatisUtils.getSqlSession();

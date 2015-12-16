@@ -16,9 +16,9 @@
 		select * from questions
 		where qid=#{qid}
 	</select>
-  	<select id="existQuestion" resultType="int">
+  	<select id="selectByQuestion" parameterType="Question" resultType="Question">
   		use resume
-  		select count(qid) count from questions
+  		select *  from questions
   		where question=#{question}
   	</select>
   </mapper>

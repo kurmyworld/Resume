@@ -12,7 +12,7 @@ public class UserDaoTest {
 	@Test
 	public void testAddUser(){
 		UserDao userDao = new UserDao();
-		User user = new User(-1, "kkkkk@foxmail.com", "choy", "kkk@password", 1, "bbbb");
+		User user = new User("kkkkk@foxmail.com", "choy", "kkk@password", 1, "bbbb");
 		int add = userDao.add(user);
 		System.out.println(add);
 	}
@@ -36,6 +36,12 @@ public class UserDaoTest {
 	public void testSelectById(){
 		UserDao userDao = new UserDao();
 		User user = userDao.selectById(1);
+		System.out.println(user);
+	}
+	@Test
+	public void testSelectByEmail(){
+		UserDao userDao = new UserDao();
+		User user = userDao.selectByEmail("ku@test.cn");
 		System.out.println(user);
 	}
 	

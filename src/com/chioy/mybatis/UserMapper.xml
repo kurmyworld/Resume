@@ -6,6 +6,9 @@
   	<select id="selectById" parameterType="int" resultType="User">
   		use resume select * from users where uid=#{id}
   	</select>
+  	<select id="selectByEmail"  resultType="User">
+  		use resume select * from users where email=#{email}
+  	</select>
   	<select id="selectAll" resultType="User">
   		use resume select * from users		
   	</select>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>com.chioy.servlet.user.Login</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Regist</servlet-name>
+    <servlet-class>com.chioy.servlet.user.Regist</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResumeAdd</servlet-name>
+    <servlet-class>com.chioy.servlet.resume.ResumeAdd</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ResumeUpdate</servlet-name>
+    <servlet-class>com.chioy.servlet.resume.ResumeUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QuestionAdd</servlet-name>
+    <servlet-class>com.chioy.servlet.question.QuestionAdd</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>VCode</servlet-name>
+    <servlet-class>com.chioy.servlet.common.VerifyCode</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>QuestionList</servlet-name>
+    <servlet-class>com.chioy.servlet.question.QuestionList</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>MyResume</servlet-name>
+    <servlet-class>com.chioy.servlet.resume.MyResume</servlet-class>
+  </servlet>
+
+
+  
+  
+  
+  
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Regist</servlet-name>
+    <url-pattern>/Regist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResumeAdd</servlet-name>
+    <url-pattern>/resume/ResumeAdd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ResumeUpdate</servlet-name>
+    <url-pattern>/resume/ResumeUpdate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QuestionAdd</servlet-name>
+    <url-pattern>/question/QuestionAdd</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VCode</servlet-name>
+    <url-pattern>/vcode</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QuestionList</servlet-name>
+    <url-pattern>/question/QuestionList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MyResume</servlet-name>
+    <url-pattern>/resume/MyResume</url-pattern>
+  </servlet-mapping>
+</web-app>

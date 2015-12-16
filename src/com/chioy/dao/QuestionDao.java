@@ -30,10 +30,10 @@ public class QuestionDao {
 		session.close();
 		return Q;
 	}
-	public int existQuestion(String question){
+	public Question existQuestion(Question question){
 		SqlSession session = MybatisUtils.getSqlSession();
-		String statement = "com.chioy.mybatis.QuestionMapper.existQuestion";
-		int q = session.selectOne(statement, question);
+		String statement = "com.chioy.mybatis.QuestionMapper.selectByQuestion";
+		Question q = session.selectOne(statement, question);
 		session.close();
 		return q;
 	} 

@@ -14,10 +14,17 @@ public class User {
 		super();
 	}
 	
-	public User(int uid, String email, String username, String userpswd,
+	public User(String email, String username, String userpswd) {
+		super();
+		this.email = email;
+		this.username = username;
+		this.userpswd = userpswd;
+	}
+
+	public User( String email, String username, String userpswd,
 			int qid, String answer) {
 		super();
-		this.uid = uid;
+		
 		this.email = email;
 		this.username = username;
 		this.userpswd = userpswd;
@@ -25,6 +32,12 @@ public class User {
 		this.answer = answer;
 	}
 
+
+	public User(String email, String userpswd) {
+		super();
+		this.email = email;
+		this.userpswd = userpswd;
+	}
 
 	/**
 	 * @return the uid
