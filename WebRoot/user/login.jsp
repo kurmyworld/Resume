@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta name="keywords" content="Flat Dark Web Login Form Responsive Templates, Iphone Widget Template, Smartphone login forms,Login form, Widget Template, Responsive Templates, a Ipad 404 Templates, Flat Responsive Templates" />
-<link href="<c:url value="/assets/css/style.css"/>" rel='stylesheet' type='text/css' />
+<link href="<c:url value="/assets/css/style1.css"/>" rel='stylesheet' type='text/css' />
 <script src="http://ajax.useso.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 <link href="<c:url value="/assets/bootstrap/css/bootstrap.min.css"/>" rel='stylesheet' type="text/css"/>
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="key">
 					<input type="password" required="required" name="userpswd" placeholder="请输入密码" />
 						</div>
-						<c:if test="${not empty requestScope.msg }"><div class="alert alert-info">${requestScope.msg }</div></c:if>
+						<c:if test="${not empty msg }"><div class="alert alert-info">${msg }</div></c:if>
 			<div class="signin">
 				<input type="submit" value="登陆" />
 			</div>

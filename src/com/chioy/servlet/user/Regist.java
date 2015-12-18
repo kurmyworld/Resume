@@ -28,7 +28,7 @@ public class Regist extends HttpServlet {
 		String uvcode = request.getParameter("vCode");
 		if(uvcode == null|| !svcode.equalsIgnoreCase(uvcode)){
 			request.setAttribute("msg","验证码错误！");
-			request.getRequestDispatcher("/user/regist.jsp").forward(request, response);
+			request.getRequestDispatcher("/").forward(request, response);
 			return ;
 		}
 		UserService userService = new UserService();
@@ -36,11 +36,15 @@ public class Regist extends HttpServlet {
 			userService.regist(form);
 			request.getSession().setAttribute("user", form);
 			request.getSession().setAttribute("msg", "注册成功！请登陆！");
-			response.sendRedirect(request.getContextPath()+"/user/login.jsp");
+			response.sendRedirect(request.getContextPath()+"/");
 		} catch (UserException e) {
-			request.setAttribute("msg", e.getMessage());
-			request.getRequestDispatcher("/user/regist.jsp").forward(request, response);
+			request.getSession().setAttribute("msg", e.getMessage());
+			response.sendRedirect(request.getContextPath()+"/");
 		}
+	}
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.sendRedirect(request.getContextPath()+"/");
 	}
 
 }
