@@ -26,13 +26,17 @@ public class MyResume extends HttpServlet {
 		ResumeService service = new ResumeService();
 		Resume resume = new Resume();
 		User user = (User) request.getSession().getAttribute("user");
+		if (user == null){
+			response.sendRedirect(request.getContextPath()+"/Login");
+			return ;
+		}
 		try {
 			resume = service.selectByUid(user.getUid());
 			request.getSession().setAttribute("resume", resume);
-			request.getRequestDispatcher("/resume/MyResume.jsp").forward(request, response);
+			request.getRequestDispatcher("/resume/ShowMyResume.jsp").forward(request, response);
 		} catch (ResumeException e) {
 			request.setAttribute("msg", e.getMessage());
-			request.getRequestDispatcher("/resume/MyResume.jsp").forward(request, response);
+			request.getRequestDispatcher("/user/login.jsp").forward(request, response);
 		}
 	}
 

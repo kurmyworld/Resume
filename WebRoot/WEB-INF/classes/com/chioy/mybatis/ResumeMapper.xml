@@ -24,7 +24,7 @@
   	
   	<insert id="addResume" parameterType="Resume">
   		use resume
-  		insert into resumes(uid,pic,name,age,sex,profession,ed_exp,wk_exp,profile)
+  		insert into resumes(uid,pic,name,age,sex,profession,ed_exp,wk_exp,profile,tel,addr)
   		values(
 	  		#{uid},
 	  		#{pic},
@@ -34,7 +34,9 @@
 	  		#{profession},
 	  		#{ed_exp},
 	  		#{wk_exp},
-	  		#{profile}
+	  		#{profile},
+	  		#{tel},
+	  		#{addr}
   		)
   	</insert>
   	
@@ -48,7 +50,9 @@
 	  profession	=	#{profession},
 	 	  ed_exp	=	#{ed_exp},
 	  	  wk_exp	=	#{wk_exp},
-	  	 profile	=	#{profile}
+	  	 profile	=	#{profile},
+	  	     tel	=	#{tel},
+	  	    addr	=	#{addr}
 	       where
 	         uid	=	#{uid}
   	</update>

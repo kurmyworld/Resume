@@ -11,6 +11,32 @@ public class Resume {
 	private String ed_exp;
 	private String wk_exp;
 	private String profile;
+	private String tel;
+	private String addr;
+	/**
+	 * @return the tell
+	 */
+	public String getTel() {
+		return tel;
+	}
+	/**
+	 * @param tell the tell to set
+	 */
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	/**
+	 * @return the addr
+	 */
+	public String getAddr() {
+		return addr;
+	}
+	/**
+	 * @param addr the addr to set
+	 */
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
 	/**
 	 * @return the rid
 	 */
@@ -156,7 +182,8 @@ public class Resume {
 		return "Resume [rid=" + rid + ", uid=" + uid + ", pic=" + pic
 				+ ", name=" + name + ", age=" + age + ", sex=" + sex
 				+ ", profession=" + profession + ", ed_exp=" + ed_exp
-				+ ", wk_exp=" + wk_exp + ", profile=" + profile + "]";
+				+ ", wk_exp=" + wk_exp + ", profile=" + profile + ", tel="
+				+ tel + ", addr=" + addr + "]";
 	}
 	
 	

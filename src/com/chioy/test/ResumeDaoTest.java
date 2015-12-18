@@ -28,6 +28,8 @@ public class ResumeDaoTest {
 	public void testUpdateResume(){
 		ResumeDao dao = new ResumeDao();
 		Resume resume = new Resume(2, "头像的url", "邱成龙", 20, 0, "software", "fr", "没工作经验", "个人简介什么不要了");
+		resume.setAddr("address");
+		resume.setTel("asdf");
 		int update = dao.updateResume(resume);
 		System.out.println(update);
 	}

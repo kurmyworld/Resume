@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
 		try {
 			User user = userService.login(form);
 			request.getSession().setAttribute("user", user);
-			response.sendRedirect(request.getContextPath()+"/resume/ShowMyResume.jsp");
+			response.sendRedirect(request.getContextPath()+"/resume/MyResume");
 		} catch (UserException e) {
 			request.setAttribute("msg", e.getMessage());
 			request.getRequestDispatcher("/user/login.jsp").forward(request, response);
