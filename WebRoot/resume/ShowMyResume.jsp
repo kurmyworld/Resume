@@ -11,8 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>MyResume</title>
   </head>
   <body>
-    <h1>${requestScope.msg }</h1>
-    ${sessionScope.user }</br>
-    ${sessionScope.resume }
+	
   </body>
 </html>

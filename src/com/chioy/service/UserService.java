@@ -11,7 +11,7 @@ public class UserService {
 	public User login(User form) throws UserException{
 		User user = null;
 		if(form.getEmail()==null||form.getUserpswd()==null){
-			throw new UserException("用户名或密码不能为空！");
+			throw new UserException("邮箱或密码不能为空！");
 		}
 		user = userDao.selectByEmail(form.getEmail());
 		if(user == null){
