@@ -30,13 +30,13 @@ public class Login extends HttpServlet {
 			response.sendRedirect(request.getContextPath()+"/resume/MyResume");
 		} catch (UserException e) {
 			request.setAttribute("msg", e.getMessage());
-			request.getRequestDispatcher("/user/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 		
 	}
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher("/user/login.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 }

@@ -45,7 +45,7 @@
 					<a href="#" class="icon ticker"> </a>
 					<div class="clear"></div></li>
 
-				<li><select id="questions" name="qid" style="width:440.468px;height:29px;"></select>
+				<li><select id="questions" name="qid" class="form-control"></select>
 					<div class="clear"></div></li>
 
 				<li><input type="text" placeholder="选择问题并填写答案" name="answer" required />
@@ -105,7 +105,6 @@
     </script>
     <script type="text/javascript">
     	function changeVcode(){
-    		
     		document.getElementById("vcode").src="<c:url value="/vcode"/>?time="+new Date().getTime();
     	}
     </script>    
