@@ -29,7 +29,7 @@ public class UserService {
 		if(form.getEmail()==null||form.getUserpswd()==null){
 			throw new UserException("用户名或密码不能为空！");
 		}
-		if(userDao.selectByEmail(form.getEmail())!=null){
+		if(userDao.selectByEmail(form.getEmail())!=null || userDao.selectByUsername(form.getUsername())!=null){
 			throw new UserException("该用户已被注册！");
 		}
 		int add = userDao.add(form);

@@ -41,8 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="avtar">
 		<img src="<c:url value="/assets/images/avtar.png" />" />
 	</div>
-			<form action="<c:url value="/Login"/>" method="post">
-					<input type="text" required="required" autocomplete="off" class="text" placeholder="用邮箱登陆"  name="email" />
+			<form action="<c:url value="/User?method=login"/>" method="post">
+					<input type="text" required="required" autocomplete="off" class="text" placeholder="邮箱或用户名"  name="email" />
 						<div class="key">
 					<input type="password" required="required" name="userpswd" placeholder="请输入密码" />
 						</div>

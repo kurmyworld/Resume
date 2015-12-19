@@ -35,13 +35,13 @@
 			<h1>登陆或者创建一个账户</h1>
 		</div>
 		<p>个人简历网站，管理你的个人简历</p>
-		<form action="<c:url value="/Regist"/>" method="post" onsubmit="return checkReg();">
+		<form action="<c:url value="/User?method=regist"/>" method="post" onsubmit="return checkReg();">
 			<ul class="left-form">
 				<h2>创建一个账户:</h2>
 				<li><input type="text" name="username" placeholder="用户名"
 					required /> <a href="#" class="icon ticker"> </a>
 					<div class="clear"></div></li>
-				<li><input type="text" name="email" placeholder="电子邮箱" required />
+				<li><input type="email" name="email" placeholder="电子邮箱" required />
 					<a href="#" class="icon ticker"> </a>
 					<div class="clear"></div></li>
 
@@ -67,13 +67,13 @@
 				<div class="clear"></div></li>
 				
 				
-				<input type="submit" value="创建账户" >
+				<input type="submit" value="创建账户" / >
 				<div class="clear"></div>
 			</ul>
 		</form>
-		<form action="<c:url value="/Login" />" method="post">
+		<form action="<c:url value="/User?method=login" />" method="post">
 			<ul class="right-form">
-				<h3>Login:</h3>
+				<h3>登陆我的账户:</h3>
 				<div>
 					<li><input type="text" name="email" placeholder="用户名或邮箱"
 						required value='<c:out value="${user.email }"/>' /></li>

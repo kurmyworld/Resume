@@ -44,7 +44,7 @@ pageContext.setAttribute("path", path);
 				 alt="templatemo easy profile">
 				<hr>
 				 <div>
-					 <small><%=basePath%>resume/Share?u=<c:out value="${user.username}"/></small>
+					 <small><%=basePath%>Share?u=<c:out value="${user.username}"/></small>
 					 <a class="icon icon-share"></a>
 				 </div>
 				 
@@ -178,8 +178,8 @@ pageContext.setAttribute("path", path);
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
 				<p>
-					<a  href="<c:url value="/resume/ResumeUpdate" /> ">修改我的简历</a>
-					<a  href="<c:url value="/user/ModifyPassword" /> ">更改密码</a>
+					<a  href="<c:url value="/resume?method=editResume" /> ">修改我的简历</a>
+					<a  href="<c:url value="/user?method=modifyPassword" /> ">更改密码</a>
 				</p>
 				<ul class="social-icons">
 					<li><a href="#" class="fa fa-facebook"></a></li>

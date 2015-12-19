@@ -19,10 +19,10 @@
 	<div class="container">
 		<c:if test="${not empty requestScope.msg}">
 			<div class="alert alert-success">
-				<h1>${msg }<a href='<c:url value="/resume/MyResume" />'>返回我的简历表</a></h1>
+				<h1>${msg }<a href='<c:url value="/resume?method=myResume" />'>返回我的简历表</a></h1>
 			</div>
 		</c:if>
-		<form action="<c:url value="/resume/ResumeUpdate"/>" method="post">
+		<form action="<c:url value="/resume?method=editResume"/>" method="post">
 			<div class="form-group">
 				<label for=" pic"> 头像url： </label> <input type="url" name="pic"
 					value='<c:out value="${resume.pic }"/>' class="form-control" />
@@ -83,7 +83,7 @@
 			</div>
 			<div class="form-group">
 				<button type="submit" class="btn btn-success">提交修改</button>
-				<a class="btn btn-primary" href='<c:url value="/resume/MyResume"/>'>返回简历</a>
+				<a class="btn btn-primary" href='<c:url value="/resume?method=myResume"/>'>返回简历</a>
 			</div>
 
 		</form>
