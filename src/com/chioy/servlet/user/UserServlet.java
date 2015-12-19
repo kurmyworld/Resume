@@ -22,8 +22,6 @@ public class UserServlet extends BaseServlet {
 		if(request.getMethod().equalsIgnoreCase("get")){
 			return path;
 		}
-		response.setContentType("text/html;charset='UTF-8'");
-		request.setCharacterEncoding("UTF-8");
 		UserService userService = new UserService();
 		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
 		try {
@@ -45,10 +43,7 @@ public class UserServlet extends BaseServlet {
 		if(request.getMethod().equalsIgnoreCase("get")){
 			return path;
 		}
-		
-		response.setContentType("text/html");
-		response.setContentType("text/html;charset='utf-8'");
-		request.setCharacterEncoding("UTF-8");
+
 		User form = CommonUtils.toBean(request.getParameterMap(),User.class);
 		String svcode = (String) request.getSession().getAttribute("vCode");
 		String uvcode = request.getParameter("vCode");

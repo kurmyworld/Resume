@@ -15,11 +15,13 @@ public abstract class BaseServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset='UTF-8'");
+		request.setCharacterEncoding("UTF-8");
 		String methodName = request.getParameter("method");
 		if(methodName == null || methodName.trim().isEmpty()){
 			throw new RuntimeException("您还没有传入方法参数！");
 		}
-		Class c = this.getClass();
+		Class<? extends BaseServlet> c = this.getClass();
 		Method method = null;
 		
 		try {

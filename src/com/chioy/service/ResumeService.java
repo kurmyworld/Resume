@@ -3,6 +3,7 @@ package com.chioy.service;
 import java.util.List;
 
 import com.chioy.dao.ResumeDao;
+import com.chioy.dao.UserDao;
 import com.chioy.domain.Resume;
 import com.chioy.exception.ResumeException;
 
@@ -19,8 +20,12 @@ public class ResumeService {
 		List<Resume> resumes = dao.selectAll();
 		return resumes;
 	}
-	public int update(Resume resume){
+	public int update(Resume resume) throws ResumeException{
 		int update;
+		UserDao userDao = new UserDao();
+		if(userDao.selectById(resume.getUid())==null){
+			throw new ResumeException("目标用户无效！");
+		}
 		update = dao.updateResume(resume);
 		return update;
 	}

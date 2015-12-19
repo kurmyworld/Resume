@@ -20,10 +20,8 @@ public class ResumeServlet extends BaseServlet {
 
 	public String myResume(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = "/resume/myResume.jsp";
 		
-		response.setContentType("text/html;charset='UTF-8'");
-		request.setCharacterEncoding("UTF-8");
+		String path = "/resume/myResume.jsp";
 		ResumeService service = new ResumeService();
 		Resume resume = new Resume();
 		User user = (User) request.getSession().getAttribute("user");
@@ -44,35 +42,42 @@ public class ResumeServlet extends BaseServlet {
 
 	public String editResume(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = "/resume/editMyResume.jsp";
 		
-		response.setContentType("text/html;charset='UTF-8'");
-		request.setCharacterEncoding("UTF-8");
+		String path = "/resume/editResume.jsp";//该方法视图路径
+		/*
+		 * 判断调用方法，如果是get方法则加载修改页面
+		 */
+		if(request.getMethod().equalsIgnoreCase("get")){
+			return path;
+		}
+		/*
+		 * 判断用户是否登陆
+		 */
 		User user = (User) request.getSession().getAttribute("user"); 
 		if(user == null){
-			return "r:/user/login.jsp";
+			request.setAttribute("msg", "请先登录！");
+			return "/user/login.jsp";
 		}
+		/*
+		 * 不是get方法则提交修改
+		 */
+		
 		
 		Resume form = CommonUtils.toBean(request.getParameterMap(), Resume.class);
-		Resume resume = new Resume();
+		Resume resume = null;
 		form.setUid(user.getUid());
 		ResumeService service = new ResumeService();
-		service.update(form);
-		request.setAttribute("msg", "修改完成！");
 		try {
+			service.update(form);
+			request.setAttribute("msg", "修改完成！");
 			resume = service.selectByUid(user.getUid());
 			request.getSession().setAttribute("resume", resume);
-			request.getRequestDispatcher("/resume/EditMyResume.jsp").forward(request, response);
 			return path;
 		} catch (ResumeException e) {
 			request.setAttribute("msg", e.getMessage());
+			System.out.println(e.getMessage());
 			return "/user/login.jsp";
 		}
-		
-	}
-	
-	public void shareResume(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 		
 	}
 

@@ -46,7 +46,7 @@
 					</div>
 					<div class="form-group">
 						<button class="btn btn-success col-sm-12 col-md-5">更改密码</button>
-						<a class="btn btn-primary col-sm-12 col-md-5   col-md-offset-2" onclick="javascript:document.location='<c:url value="/resume/MyResume"/>';">返回首页</a>
+						<a class="btn btn-primary col-sm-12 col-md-5   col-md-offset-2" onclick="javascript:document.location='<c:url value="/resume?method=myResume"/>';">返回首页</a>
 					</div>
 				</form>
 			</div>
