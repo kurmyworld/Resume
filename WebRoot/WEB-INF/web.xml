@@ -32,6 +32,16 @@
     <servlet-name>MyResume</servlet-name>
     <servlet-class>com.chioy.servlet.resume.MyResume</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>Share</servlet-name>
+    <servlet-class>com.chioy.servlet.resume.Share</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ModifyPassword</servlet-name>
+    <servlet-class>com.chioy.servlet.user.ModifyPassword</servlet-class>
+  </servlet>
+
+
 
 
   
@@ -69,5 +79,13 @@
   <servlet-mapping>
     <servlet-name>MyResume</servlet-name>
     <url-pattern>/resume/MyResume</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Share</servlet-name>
+    <url-pattern>/resume/Share</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ModifyPassword</servlet-name>
+    <url-pattern>/user/ModifyPassword</url-pattern>
   </servlet-mapping>
 </web-app>

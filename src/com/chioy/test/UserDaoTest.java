@@ -44,5 +44,11 @@ public class UserDaoTest {
 		User user = userDao.selectByEmail("ku@test.cn");
 		System.out.println(user);
 	}
+	@Test
+	public void testSelectByUsername(){
+		UserDao userDao = new UserDao();
+		User user = userDao.selectByUsername("choy");
+		System.out.println(user);
+	}
 	
 }

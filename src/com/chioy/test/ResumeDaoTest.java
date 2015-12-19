@@ -39,4 +39,5 @@ public class ResumeDaoTest {
 		Resume resume = dao.selectByUid(3);
 		System.out.println(resume);
 	}
+
 }

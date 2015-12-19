@@ -21,7 +21,7 @@
 		var p1 = document.getElementById("p1");
 		var p2 = document.getElementById("p2");
 		if(p1.value != p2.value){
-			alert("不一样！");
+			alert("两次输入的密码不同，请检查！");
 			return false;
 		}
 		return true;
@@ -75,7 +75,7 @@
 			<ul class="right-form">
 				<h3>Login:</h3>
 				<div>
-					<li><input type="text" name="email" placeholder="您的邮箱"
+					<li><input type="text" name="email" placeholder="用户名或邮箱"
 						required value='<c:out value="${user.email }"/>' /></li>
 					<li><input type="password" name="userpswd" placeholder="密码"
 						required value='<c:out value="${user.userpswd }"/>'/></li>

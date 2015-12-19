@@ -15,7 +15,10 @@ public class UserService {
 		}
 		user = userDao.selectByEmail(form.getEmail());
 		if(user == null){
-			throw new UserException("用户："+form.getEmail()+"还未注册！");
+			user = userDao.selectByUsername(form.getEmail());
+			if(user == null){
+				throw new UserException("用户"+form.getEmail()+"未注册");
+			}
 		}
 		if(!user.getUserpswd().equals(form.getUserpswd())){
 			throw new UserException("用户名或密码错误！");
@@ -43,5 +46,12 @@ public class UserService {
 	public List<User> getAll(){
 		List<User> users = userDao.selectAll();
 		return users;
+	}
+	public User selectByUsername(String username) throws UserException{
+		User user = userDao.selectByUsername(username);
+		if(user == null){
+			throw new UserException("找不到此人简历");
+		}
+		return user;
 	}
 }

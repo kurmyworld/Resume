@@ -56,4 +56,12 @@ public class UserDao {
 		session.close();
 		return update;
 	}
+	public User selectByUsername(String username){
+		String alter = "selectByUsername";
+		SqlSession session = MybatisUtils.getSqlSession();
+		String statement = "com.chioy.mybatis.UserMapper."+alter;
+		User user = session.selectOne(statement, username);
+		session.close();
+		return user;
+	}
 }
