@@ -22,5 +22,6 @@
     	<mapper resource="com/chioy/mybatis/QuestionMapper.xml"/>
     	<mapper resource="com/chioy/mybatis/UserInfoMapper.xml"/>
     	<mapper resource="com/chioy/mybatis/ResumeMapper.xml"/>
+    	<mapper resource="com/chioy/mybatis/AdminMapper.xml"/>
     </mappers>
 </configuration>

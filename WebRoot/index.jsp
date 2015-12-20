@@ -79,10 +79,13 @@
 						required value='<c:out value="${user.email }"/>' /></li>
 					<li><input type="password" name="userpswd" placeholder="密码"
 						required value='<c:out value="${user.userpswd }"/>'/></li>
-					<h4><a href='<c:url value="/user?method=forgotten_step1"/>'>------忘记密码点这里------</a></h4>
+					<h4><a href='<c:url value="/user?method=forgotten_step1"/>'>　　忘记密码点这里　　</a></h4>
 					<input type="submit" value="登陆">
 				</div>
 				<div class="clear"></div>
+				<div class="row">
+						<a href='<c:url value="/admin?method=login"/>'>管理员登陆</a>
+					</div>
 				<div><c:if test="${not empty msg}"><div class="alert alert-warning">${msg }</div></c:if></div>
 			</ul>
 			<div class="clear"></div>
@@ -99,6 +102,8 @@
 	</div>
 	<!-----//end-copyright---->
 	 <script src="<c:url value="/assets/js/Questions.js"/>"></script>
+	 <script src="<c:url value="/assets/bootstrap/js/jquery.js"/>"></script>
+	 <script src="<c:url value="/assets/bootstrap/js/bootstrap.min.js"/>"></script>
 	    <script>
    		var inner = document.getElementById("questions");
    		loadAllQuestions('post','<c:url value="/question/QuestionList"/>',document.getElementById("questions"));

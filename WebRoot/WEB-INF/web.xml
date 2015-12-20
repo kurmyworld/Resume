@@ -23,6 +23,11 @@
     <servlet-name>ResumeServlet</servlet-name>
     <servlet-class>com.chioy.servlet.resume.ResumeServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.chioy.servlet.admin.AdminServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -58,5 +63,10 @@
     <servlet-name>ResumeServlet</servlet-name>
     <url-pattern>/Resume</url-pattern>
     <url-pattern>/resume</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/Admin</url-pattern>
+    <url-pattern>/admin</url-pattern>
   </servlet-mapping>
 </web-app>
