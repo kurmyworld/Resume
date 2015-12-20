@@ -50,8 +50,19 @@ public class UserService {
 	public User selectByUsername(String username) throws UserException{
 		User user = userDao.selectByUsername(username);
 		if(user == null){
-			throw new UserException("找不到此人简历");
+			throw new UserException("找不到此人");
 		}
 		return user;
 	}
+	public User selectByEmail(String email) throws UserException{
+		if(email==null||email.trim().isEmpty()){
+			throw new UserException("查询条件不能为空！");
+		}
+		User user = userDao.selectByEmail(email);
+		if(user == null){
+			throw new UserException("找不到此人");
+		}
+		return user;
+	}
+	
 }

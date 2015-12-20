@@ -12,4 +12,9 @@
   		select * from v_userinfo 
   		where uid=#{uid}
   	</select>
+  	<select id="selectByEmail" resultType="UserInfo">
+  		use resume
+  		select * from v_userinfo 
+  		where email=#{email}
+  	</select>
   </mapper>

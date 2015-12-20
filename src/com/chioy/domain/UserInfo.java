@@ -11,7 +11,7 @@ public class UserInfo {
 	private String userpswd;
 	private String question;
 	private String answer;
-	public UserInfo(String email, String username, String userpswd,
+	public UserInfo(int uid,String email, String username, String userpswd,
 			String question, String answer) {
 		super();
 		this.uid = -1;

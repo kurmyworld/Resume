@@ -79,7 +79,7 @@
 						required value='<c:out value="${user.email }"/>' /></li>
 					<li><input type="password" name="userpswd" placeholder="密码"
 						required value='<c:out value="${user.userpswd }"/>'/></li>
-					<h4>如果你忘了密码我也没办法</h4>
+					<h4><a href='<c:url value="/user?method=forgotten_step1"/>'>------忘记密码点这里------</a></h4>
 					<input type="submit" value="登陆">
 				</div>
 				<div class="clear"></div>

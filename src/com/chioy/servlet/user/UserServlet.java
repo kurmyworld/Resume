@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.chioy.domain.User;
+import com.chioy.domain.UserInfo;
 import com.chioy.exception.UserException;
+import com.chioy.exception.UserInfoException;
+import com.chioy.service.UserInfoService;
 import com.chioy.service.UserService;
 import com.chioy.servlet.common.BaseServlet;
 
@@ -16,10 +19,11 @@ import fr.chioy.utils.CommonUtils;
 public class UserServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
+
 	public String login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String path = "f:/user/login.jsp";
-		if(request.getMethod().equalsIgnoreCase("get")){
+		if (request.getMethod().equalsIgnoreCase("get")) {
 			return path;
 		}
 		UserService userService = new UserService();
@@ -27,28 +31,28 @@ public class UserServlet extends BaseServlet {
 		try {
 			User user = userService.login(form);
 			request.getSession().setAttribute("user", user);
-			path ="r:/resume?method=myResume";
+			path = "r:/resume?method=myResume";
 			return path;
 		} catch (UserException e) {
 			request.setAttribute("msg", e.getMessage());
 			path = "f:/user/login.jsp";
 			return path;
 		}
-		
+
 	}
 
-	public String regist(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public String regist(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		String path = "/index.jsp";
-		if(request.getMethod().equalsIgnoreCase("get")){
+		if (request.getMethod().equalsIgnoreCase("get")) {
 			return path;
 		}
 
-		User form = CommonUtils.toBean(request.getParameterMap(),User.class);
+		User form = CommonUtils.toBean(request.getParameterMap(), User.class);
 		String svcode = (String) request.getSession().getAttribute("vCode");
 		String uvcode = request.getParameter("vCode");
-		if(uvcode == null|| !svcode.equalsIgnoreCase(uvcode)){
-			request.setAttribute("msg","验证码错误！");
+		if (uvcode == null || !svcode.equalsIgnoreCase(uvcode)) {
+			request.setAttribute("msg", "验证码错误！");
 			return path;
 		}
 		UserService userService = new UserService();
@@ -62,35 +66,107 @@ public class UserServlet extends BaseServlet {
 			return path;
 		}
 	}
-	
-	
-	public String modifyPassword(HttpServletRequest request,HttpServletResponse response)
-			throws IOException,ServletException{
+
+	public String modifyPassword(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
 		String path = "/user/modifyPassword.jsp";
-		if(request.getMethod().equalsIgnoreCase("get")){
+		if (request.getMethod().equalsIgnoreCase("get")) {
 			return path;
 		}
-		
+
 		response.setContentType("text/html");
 		request.setCharacterEncoding("utf-8");
 		User user = (User) request.getSession().getAttribute("user");
-		if(user == null){
+		if (user == null) {
 			request.setAttribute("msg", "请先登录！");
 			return "/index.jsp";
 		}
 		String oldpswd = user.getUserpswd();
 		String oldpswd2 = request.getParameter("oldpswd");
 		String newpswd = request.getParameter("newpswd");
-		if(oldpswd.equals(oldpswd2)){
+		if (oldpswd.equals(oldpswd2)) {
 			user.setUserpswd(newpswd);
 			UserService userService = new UserService();
 			userService.update(user);
 			request.setAttribute("msg", " 更改密码成功！");
-		}else{
+		} else {
 			request.setAttribute("msg", "旧密码错误！");
 		}
 		return path;
-		
+
+	}
+
+	public String forgotten_step1(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
+		if (request.getMethod().equalsIgnoreCase("get")) {
+			return "f:/user/forgotten_step1.jsp";
+		}
+		String email = null;
+		email = request.getParameter("email");
+		if (email == null || email.trim().isEmpty()) {
+			return "f:/user/forgotten_step1.jsp";
+		}
+		UserInfoService userInfoService = new UserInfoService();
+		try {
+			UserInfo userInfo = userInfoService.selectByEmail(email);
+			request.getSession().setAttribute("userInfo", userInfo);
+			return "r:/user?method=forgotten_step2";
+		} catch (UserInfoException e) {
+			request.setAttribute("msg", e.getMessage());
+			return "f:/user/forgotten_step1.jsp";
+		}
+
+	}
+
+	public String forgotten_step2(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException,
+			UserException {
+		if (request.getMethod().equalsIgnoreCase("get")) {
+			return "f:/user/forgotten_step2.jsp";
+		}
+		UserService userService = new UserService();
+		UserInfo form = null;
+		User user = null;
+		form = (UserInfo) request.getSession().getAttribute("userInfo");
+		if (form == null) {
+			return "r:/user?method=forgotten_step1";
+		}
+		try {
+
+			user = userService.selectByEmail(form.getEmail());
+			if (!form.getAnswer().equals(user.getAnswer())) {
+				request.setAttribute("msg", "问题答案不正确！");
+				return "f:/user/forgotten_step2.jsp";
+			}
+			request.getSession().setAttribute("tempuser", user);
+			return "r:/user?method=resetPassword";
+		} catch (UserException e) {
+			throw e;
+		}
+	}
+
+	public String resetPassword(HttpServletRequest request,
+			HttpServletResponse response) throws IOException, ServletException {
+		if (request.getMethod().equalsIgnoreCase("get")) {
+			return "f:/user/resetPassword.jsp";
+		}
+		User user = (User) request.getSession().getAttribute("tempuser");
+		if(user==null){
+			return "r:/user?method=forgotten_step1";
+		}
+		try {
+			String newpswd = request.getParameter("newpswd");
+			if (newpswd == null || newpswd.trim().isEmpty()) {
+				return "r:/user?method=resetPassword";
+			}
+			user.setUserpswd(newpswd);
+			UserService userService = new UserService();
+			userService.update(user);
+			request.setAttribute("msg", "修改完成！");
+			return "f:/user/resetPassword.jsp";
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

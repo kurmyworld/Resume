@@ -30,4 +30,14 @@ public class UserServiceTest {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	public void testSelectByEmail(){
+		User user;
+		try {
+			user = service.selectByEmail("s");
+			System.out.println(user);
+		} catch (UserException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

@@ -20,4 +20,12 @@ public class UserInfoService {
 		List<UserInfo> userInfos = dao.selectAll();
 		return userInfos;
 	}
+	public UserInfo selectByEmail(String email) throws UserInfoException{
+		UserInfo userInfo = new UserInfo();
+		userInfo = dao.selectByEmail(email);
+		if(userInfo == null){
+			throw new UserInfoException("找不到该用户！");
+		}
+		return userInfo;
+	}
 }
