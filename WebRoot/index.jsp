@@ -34,11 +34,11 @@
 		<div class="header">
 			<h1>登陆或者创建一个账户</h1>
 		</div>
-		<p>个人简历网站，管理你的个人简历</p>
+		<p>管理你的个人简历（其实就是个实训作业）</p>
 		<form action="<c:url value="/User?method=regist"/>" method="post" onsubmit="return checkReg();">
 			<ul class="left-form">
 				<h2>创建一个账户:</h2>
-				<li><input type="text" name="username" placeholder="用户名"
+				<li><input type="text" name="username" placeholder="用户名（个性域名）"
 					required /> <a href="#" class="icon ticker"> </a>
 					<div class="clear"></div></li>
 				<li><input type="email" name="email" placeholder="电子邮箱" required />

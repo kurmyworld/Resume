@@ -44,6 +44,11 @@ public class ResumeServlet extends BaseServlet {
 			throws ServletException, IOException {
 		
 		String path = "/resume/editResume.jsp";//该方法视图路径
+		User user = (User) request.getSession().getAttribute("user"); 
+		if(user == null){
+			request.setAttribute("msg", "请先登录！");
+			return "/user/login.jsp";
+		}
 		/*
 		 * 判断调用方法，如果是get方法则加载修改页面
 		 */
@@ -53,11 +58,6 @@ public class ResumeServlet extends BaseServlet {
 		/*
 		 * 判断用户是否登陆
 		 */
-		User user = (User) request.getSession().getAttribute("user"); 
-		if(user == null){
-			request.setAttribute("msg", "请先登录！");
-			return "/user/login.jsp";
-		}
 		/*
 		 * 不是get方法则提交修改
 		 */
