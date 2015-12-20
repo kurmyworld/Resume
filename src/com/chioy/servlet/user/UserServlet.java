@@ -127,12 +127,12 @@ public class UserServlet extends BaseServlet {
 		UserService userService = new UserService();
 		UserInfo form = null;
 		User user = null;
-		form = (UserInfo) request.getSession().getAttribute("userInfo");
+		form = CommonUtils.toBean(request.getParameterMap(), UserInfo.class);
 		if (form == null) {
 			return "r:/user?method=forgotten_step1";
 		}
 		try {
-
+			
 			user = userService.selectByEmail(form.getEmail());
 			if (!form.getAnswer().equals(user.getAnswer())) {
 				request.setAttribute("msg", "问题答案不正确！");
