@@ -27,7 +27,7 @@ public class ResumeServlet extends BaseServlet {
 		User user = (User) request.getSession().getAttribute("user");
 		if (user == null){
 			request.setAttribute("msg", "请先登录！");
-			return "f:/user/login.jsp";
+			return "f:/WEB-INF/user/login.jsp";
 		}
 		try {
 			resume = service.selectByUid(user.getUid());
@@ -76,7 +76,7 @@ public class ResumeServlet extends BaseServlet {
 		} catch (ResumeException e) {
 			request.setAttribute("msg", e.getMessage());
 			System.out.println(e.getMessage());
-			return "/user/login.jsp";
+			return "/WEB-INF/user/login.jsp";
 		}
 		
 	}

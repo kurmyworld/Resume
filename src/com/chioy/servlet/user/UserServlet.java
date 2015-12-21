@@ -22,7 +22,7 @@ public class UserServlet extends BaseServlet {
 
 	public String login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = "f:/user/login.jsp";
+		String path = "f:/WEB-INF/user/login.jsp";
 		if (request.getMethod().equalsIgnoreCase("get")) {
 			return path;
 		}
@@ -35,7 +35,7 @@ public class UserServlet extends BaseServlet {
 			return path;
 		} catch (UserException e) {
 			request.setAttribute("msg", e.getMessage());
-			path = "f:/user/login.jsp";
+			path = "f:/WEB-INF/user/login.jsp";
 			return path;
 		}
 
@@ -69,7 +69,7 @@ public class UserServlet extends BaseServlet {
 
 	public String modifyPassword(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
-		String path = "/user/modifyPassword.jsp";
+		String path = "/WEB-INF/user/modifyPassword.jsp";
 		if (request.getMethod().equalsIgnoreCase("get")) {
 			return path;
 		}
@@ -99,12 +99,12 @@ public class UserServlet extends BaseServlet {
 	public String forgotten_step1(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		if (request.getMethod().equalsIgnoreCase("get")) {
-			return "f:/user/forgotten_step1.jsp";
+			return "f:/WEB-INF/user/forgotten_step1.jsp";
 		}
 		String email = null;
 		email = request.getParameter("email");
 		if (email == null || email.trim().isEmpty()) {
-			return "f:/user/forgotten_step1.jsp";
+			return "f:/WEB-INF/user/forgotten_step1.jsp";
 		}
 		UserInfoService userInfoService = new UserInfoService();
 		try {
@@ -113,7 +113,7 @@ public class UserServlet extends BaseServlet {
 			return "r:/user?method=forgotten_step2";
 		} catch (UserInfoException e) {
 			request.setAttribute("msg", e.getMessage());
-			return "f:/user/forgotten_step1.jsp";
+			return "f:/WEB-INF/user/forgotten_step1.jsp";
 		}
 
 	}
@@ -122,7 +122,7 @@ public class UserServlet extends BaseServlet {
 			HttpServletResponse response) throws IOException, ServletException,
 			UserException {
 		if (request.getMethod().equalsIgnoreCase("get")) {
-			return "f:/user/forgotten_step2.jsp";
+			return "f:/WEB-INF/user/forgotten_step2.jsp";
 		}
 		UserService userService = new UserService();
 		UserInfo form = null;
@@ -136,7 +136,7 @@ public class UserServlet extends BaseServlet {
 			user = userService.selectByEmail(form.getEmail());
 			if (!form.getAnswer().equals(user.getAnswer())) {
 				request.setAttribute("msg", "问题答案不正确！");
-				return "f:/user/forgotten_step2.jsp";
+				return "f:/WEB-INF/user/forgotten_step2.jsp";
 			}
 			request.getSession().setAttribute("tempuser", user);
 			return "r:/user?method=resetPassword";
@@ -148,7 +148,7 @@ public class UserServlet extends BaseServlet {
 	public String resetPassword(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		if (request.getMethod().equalsIgnoreCase("get")) {
-			return "f:/user/resetPassword.jsp";
+			return "f:/WEB-INF/user/resetPassword.jsp";
 		}
 		User user = (User) request.getSession().getAttribute("tempuser");
 		if(user==null){
@@ -163,7 +163,7 @@ public class UserServlet extends BaseServlet {
 			UserService userService = new UserService();
 			userService.update(user);
 			request.setAttribute("msg", "修改完成！");
-			return "f:/user/resetPassword.jsp";
+			return "f:/WEB-INF/user/resetPassword.jsp";
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

@@ -1,7 +1,11 @@
 package com.chioy.service;
 
+import java.util.List;
+
 import com.chioy.dao.AdminDao;
 import com.chioy.domain.Admin;
+import com.chioy.domain.ConditionUser;
+import com.chioy.domain.User;
 import com.chioy.exception.AdminException;
 
 public class AdminService {
@@ -23,5 +27,17 @@ public class AdminService {
 			throw new AdminException("密码错误！");
 		}
 		return admin;
+	}
+	public List<User> selectUser(ConditionUser form){
+		if(form.getEmail()==null||form.getEmail().trim().isEmpty()){
+			form.setEmail("");
+		}
+		if(form.getUsername()==null||form.getUsername().trim().isEmpty()){
+			form.setUsername("");
+		}
+		
+		AdminDao adminDao = new AdminDao();
+		List<User> users = adminDao.selectUser(form);
+		return users;
 	}
 }

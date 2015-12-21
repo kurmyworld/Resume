@@ -7,10 +7,7 @@
     <servlet-name>VCode</servlet-name>
     <servlet-class>com.chioy.servlet.common.VerifyCode</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>QuestionList</servlet-name>
-    <servlet-class>com.chioy.servlet.question.QuestionList</servlet-class>
-  </servlet>
+
   <servlet>
     <servlet-name>Share</servlet-name>
     <servlet-class>com.chioy.servlet.resume.Share</servlet-class>
@@ -27,6 +24,11 @@
     <servlet-name>AdminServlet</servlet-name>
     <servlet-class>com.chioy.servlet.admin.AdminServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>QuestionServlet</servlet-name>
+    <servlet-class>com.chioy.servlet.question.QuestionServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -40,10 +42,7 @@
   
 
 
-  <servlet-mapping>
-    <servlet-name>QuestionList</servlet-name>
-    <url-pattern>/question/QuestionList</url-pattern>
-  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>VCode</servlet-name>
     <url-pattern>/vcode</url-pattern>
@@ -68,5 +67,10 @@
     <servlet-name>AdminServlet</servlet-name>
     <url-pattern>/Admin</url-pattern>
     <url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>QuestionServlet</servlet-name>
+    <url-pattern>/Question</url-pattern>
+    <url-pattern>/question</url-pattern>
   </servlet-mapping>
 </web-app>
