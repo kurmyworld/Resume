@@ -17,7 +17,7 @@ public class ResumeServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public String myResume(HttpServletRequest request, HttpServletResponse response)
+	public String myresume(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String path = "/resume/myResume.jsp";
@@ -39,7 +39,7 @@ public class ResumeServlet extends BaseServlet {
 		
 	}
 
-	public String editResume(HttpServletRequest request, HttpServletResponse response)
+	public String editresume(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String path = "/resume/editResume.jsp";//该方法视图路径

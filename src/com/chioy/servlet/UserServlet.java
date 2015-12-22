@@ -66,7 +66,7 @@ public class UserServlet extends BaseServlet {
 		}
 	}
 
-	public String modifyPassword(HttpServletRequest request,
+	public String modifypassword(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		String path = "/WEB-INF/user/modifyPassword.jsp";
 		if (request.getMethod().equalsIgnoreCase("get")) {
@@ -144,7 +144,7 @@ public class UserServlet extends BaseServlet {
 		}
 	}
 
-	public String resetPassword(HttpServletRequest request,
+	public String resetpassword(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		if (request.getMethod().equalsIgnoreCase("get")) {
 			return "f:/WEB-INF/user/resetPassword.jsp";

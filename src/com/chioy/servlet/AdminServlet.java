@@ -76,7 +76,7 @@ public class AdminServlet extends BaseServlet {
 		request.setAttribute("users", users);
 		return "f:/WEB-INF/ajax/query.jsp";
 	}
-	public String delUser(HttpServletRequest request, HttpServletResponse response)
+	public String deluser(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException,UserException{
 		if(request.getSession().getAttribute("admin") == null){
 			request.setAttribute("msg","您貌似没登录？");

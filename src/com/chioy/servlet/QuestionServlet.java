@@ -18,7 +18,7 @@ public class QuestionServlet extends BaseServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public String getList(HttpServletRequest request, HttpServletResponse response)
+	public String getlist(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if(request.getMethod().equalsIgnoreCase("post")){
 			QuestionService service = new QuestionService();

@@ -18,6 +18,7 @@ public abstract class BaseServlet extends HttpServlet {
 		response.setContentType("text/html;charset='UTF-8'");
 		request.setCharacterEncoding("UTF-8");
 		String methodName = request.getParameter("method");
+		methodName = methodName.toLowerCase();
 		if(methodName == null || methodName.trim().isEmpty()){
 			throw new RuntimeException("您还没有传入方法参数！");
 		}
