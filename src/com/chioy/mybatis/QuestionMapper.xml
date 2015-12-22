@@ -6,6 +6,7 @@
   	<select id="selectAll" resultType="Question">
   		use resume
   		select * from questions
+  		order by qid
   	</select>
   	<insert id="addQuestion" parameterType="Question">
   		use resume

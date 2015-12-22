@@ -14,14 +14,16 @@ public class QuestionService {
 	 * @return
 	 * @throws QuestionException
 	 */
-	public int addQuestion(Question form) throws QuestionException{
-		int add=0;
+	public Question addQuestion(Question form) throws QuestionException{
+		Question add=null;
 		if(form.getQuestion() == null){
 			throw new QuestionException("问题不能为空！");
 		}
-		if(dao.existQuestion(form)!=null){
+		if(dao.selectByQuestion(form)!=null){
 			throw new QuestionException("问题已存在！");
 		}
+		dao.add(form);
+		add = selectByQuestion(form);
 		return add;
 	}
 	/**
@@ -50,8 +52,8 @@ public class QuestionService {
 	 * @param question
 	 * @return
 	 */
-	public Question existQuestion(Question question){
-		Question q = dao.existQuestion(question);
+	public Question selectByQuestion(Question question){
+		Question q = dao.selectByQuestion(question);
 		return q;
 	}
 }

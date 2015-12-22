@@ -26,7 +26,7 @@ public class QuestionDaoTest {
 	public void testSelectByQuestion(){
 		QuestionDao dao = new QuestionDao();
 		Question qs = new Question("我的小学名称？");
-		Question q = dao.existQuestion(qs);
+		Question q = dao.selectByQuestion(qs);
 		System.out.println(q);
 	}
 	@Test

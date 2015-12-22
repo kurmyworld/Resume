@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chioy.domain.Admin;
 import com.chioy.domain.ConditionUser;
+import com.chioy.domain.Question;
 import com.chioy.domain.User;
 import com.chioy.exception.AdminException;
 import com.chioy.exception.UserException;
 import com.chioy.service.AdminService;
+import com.chioy.service.QuestionService;
 import com.chioy.service.UserService;
 
 import fr.chioy.utils.CommonUtils;
@@ -32,20 +34,31 @@ public class AdminServlet extends BaseServlet {
 		try {
 			admin = service.login(form);
 			request.getSession().setAttribute("admin", admin);
-			return "r:/admin?method=panel";
+			return "r:/admin?method=umgr";
 		} catch (AdminException e) {
 			request.setAttribute("msg", e.getMessage());
 			return "f:/WEB-INF/admin/login.jsp";
 		}
 	}
 
-	public String panel(HttpServletRequest request, HttpServletResponse response)
+	public String umgr(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if(request.getSession().getAttribute("admin")==null){
 			request.setAttribute("msg", "请先登陆！");
 			return "/WEB-INF/admin/login.jsp";
 		}
-		return "/WEB-INF/admin/panel.jsp";
+		return "/WEB-INF/admin/umgr.jsp";
+	}
+	public String qmgr(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		if(request.getSession().getAttribute("admin")==null){
+			request.setAttribute("msg", "请先登陆！");
+			return "/WEB-INF/admin/login.jsp";
+		}
+		QuestionService service = new QuestionService();
+		List<Question> qs = service.selectAll();
+		request.setAttribute("qs", qs);
+		return "/WEB-INF/admin/qmgr.jsp";
 	}
 	public String query(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -55,7 +68,7 @@ public class AdminServlet extends BaseServlet {
 			return "f:/WEB-INF/ajax/query.jsp";
 		}
 		if(request.getMethod().equalsIgnoreCase("get")){
-			return "r:/admin?method=panel";
+			return "r:/admin?method=umgr";
 		}
 		AdminService adminService = new AdminService();
 		ConditionUser form = CommonUtils.toBean(request.getParameterMap(), ConditionUser.class);
@@ -67,7 +80,7 @@ public class AdminServlet extends BaseServlet {
 			throws ServletException, IOException,UserException{
 		if(request.getSession().getAttribute("admin") == null){
 			request.setAttribute("msg","您貌似没登录？");
-			return "/WEB-INF/ajax/deluser.jsp";
+			return "/WEB-INF/ajax/msg.jsp";
 		}
 		
 		int id = Integer.valueOf(request.getParameter("id"));
@@ -76,10 +89,10 @@ public class AdminServlet extends BaseServlet {
 		try {
 			del = userService.deleteById(id);
 			request.setAttribute("msg","已删除" + del+"名用户！");
-			return "/WEB-INF/ajax/deluser.jsp";
+			return "/WEB-INF/ajax/msg.jsp";
 		} catch (UserException e) {
 			request.setAttribute("msg", e.getMessage());
-			return "/WEB-INF/ajax/deluser.jsp";
+			return "/WEB-INF/ajax/msg.jsp";
 		}
 		
 	}
