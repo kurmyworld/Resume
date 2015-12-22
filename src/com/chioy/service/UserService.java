@@ -50,7 +50,7 @@ public class UserService {
 	public User selectByUsername(String username) throws UserException{
 		User user = userDao.selectByUsername(username);
 		if(user == null){
-			throw new UserException("找不到此人");
+			throw new UserException("该用户未注册或已被注销");
 		}
 		return user;
 	}
@@ -60,7 +60,7 @@ public class UserService {
 		}
 		User user = userDao.selectByEmail(email);
 		if(user == null){
-			throw new UserException("找不到此人");
+			throw new UserException("该用户未注册或已被注销");
 		}
 		return user;
 	}
@@ -70,7 +70,7 @@ public class UserService {
 		}
 		int del = userDao.deleteByUsername(username);
 		if(del == 0){
-			throw new UserException("没这个人，白做了！");
+			throw new UserException("该用户未注册或已被注销");
 		}else{
 			return del;
 		}
@@ -81,7 +81,7 @@ public class UserService {
 		}
 		int del = userDao.deleteById(id);
 		if(del == 0){
-			throw new UserException("没这个人，白做了！");
+			throw new UserException("该用户未注册或已被注销");
 		}else{
 			return del;
 		}

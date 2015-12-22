@@ -1,147 +1,166 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-pageContext.setAttribute("path", path);
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	pageContext.setAttribute("path", path);
 %>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-	<meta charset="utf-8">
-	<title>MyResume</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
+<meta charset="utf-8">
+<title>MyResume</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
 
-	<!-- stylesheet css -->
-	<link rel="stylesheet" href="<c:url value="/assets/bootstrap/css/bootstrap.min.css" />">
-	<link rel="stylesheet" href="<c:url value="/resume/css/font-awesome.min.css"/>">
-	<link rel="stylesheet" href="<c:url value="/resume/css/templatemo-blue.css"/>">
+<!-- stylesheet css -->
+<link rel="stylesheet"
+	href="<c:url value="/assets/bootstrap/css/bootstrap.min.css" />">
+<link rel="stylesheet"
+	href="<c:url value="/resume/css/font-awesome.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resume/css/templatemo-blue.css"/>">
 </head>
 <body data-spy="scroll" data-target=".navbar-collapse">
 
-<!-- preloader section -->
-<div class="preloader">
-	<div class="sk-spinner sk-spinner-wordpress">
-       <span class="sk-inner-circle"></span>
-     </div>
-</div>
+	<!-- preloader section -->
+	<div class="preloader">
+		<div class="sk-spinner sk-spinner-wordpress">
+			<span class="sk-inner-circle"></span>
+		</div>
+	</div>
 
-<!-- header section -->
-<header>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<img src='
+	<!-- header section -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<img
+						src='
 					<c:choose>
 						<c:when test="${empty resume.pic}"><c:url value='/resume/images/tm-easy-profile.jpg'/></c:when>
 						<c:when test="${resume.pic != ' ' }"><c:out value='${resume.pic }'/></c:when>
 					</c:choose>
-				' class="img-responsive img-circle tm-border"
-				style="width:255px;height:255px;"
-				 alt="templatemo easy profile">
-				<hr>
-				 <div>
-					 <small><%=basePath%>Share?u=<c:out value="${user.username}"/></small>
-					 <a class="icon icon-share"></a>
-				 </div>
-				 
-				<h1 class="tm-title bold shadow">你好, 我是 <c:out value="${resume.name }"/>
-				</h1>
-				
-			</div>
-		</div>
-	</div>
-</header>
+				'
+						class="img-responsive img-circle tm-border"
+						style="width:255px;height:255px;" alt="templatemo easy profile">
+					<hr>
+					<div>
+						<button type="button" class="btn btn-primary"
+							title="我的主页分享链接" data-container="body" data-toggle="popover"
+							data-placement="top" data-content='<%=basePath%>Share?u=<c:out value="${user.username}" />'>
+							分享我的资料</button>
+					</div>
 
-<!-- about and skills section -->
-<section class="container">
-	<div class="row">
-		<div class="col-md-6 col-sm-12">
-			<div class="about">
-				<h3 class="accent">个人简介</h3>
-				<h2>My Resume Profile</h2>
-				<p><c:out value="${resume.profile}"/></p>
+					<h1 class="tm-title bold shadow">
+						你好, 我是
+						<c:out value="${resume.name }" />
+					</h1>
+
+				</div>
 			</div>
 		</div>
-		<div class="col-md-6 col-sm-12">
-			<div class="skills">
-				<h2 class="white">个人信息</h2>
-				<strong>姓名:</strong>
-				<span class="pull-right"><c:out value="${resume.name }"/></span>
-				<!-- 
+	</header>
+
+	<!-- about and skills section -->
+	<section class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-12">
+				<div class="about">
+					<h3 class="accent">个人简介</h3>
+					<h2>My Resume Profile</h2>
+					<p>
+						<c:out value="${resume.profile}" />
+					</p>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="skills">
+					<h2 class="white">个人信息</h2>
+					<strong>姓名:</strong> <span class="pull-right"><c:out
+							value="${resume.name }" /></span>
+					<!-- 
 				 -->
 					<div class="progress">
-					<!-- 
+						<!-- 
 						<div class="progress-bar progress-bar-primary" role="progressbar"
                         aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
 					 -->
 					</div>
-				
-				<strong>性别：</strong>
-				<span class="pull-right">
-					<c:choose>
-						<c:when test="${resume.sex ==1 }">男</c:when>
-						<c:when test="${resume.sex ==0 }">女</c:when>
-					</c:choose>
-				</span>
+
+					<strong>性别：</strong> <span class="pull-right"> <c:choose>
+							<c:when test="${resume.sex ==1 }">男</c:when>
+							<c:when test="${resume.sex ==0 }">女</c:when>
+						</c:choose>
+					</span>
 					<div class="progress">
-					<!-- 
+						<!-- 
 						<div class="progress-bar progress-bar-primary" role="progressbar"
                         aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
 					 -->
 					</div>
-				<strong>专业：</strong>
-				<span class="pull-right"><c:out value="${resume.profession }"/></span>
+					<strong>专业：</strong> <span class="pull-right"><c:out
+							value="${resume.profession }" /></span>
 					<div class="progress">
-					<!-- 
+						<!-- 
 						<div class="progress-bar progress-bar-primary" role="progressbar"
                         aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%;"></div>
 					 -->
 					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<!-- education and languages -->
-<section class="container">
-	<div class="row">
-		<div class="col-md-8 col-sm-12">
-			<div class="education">
-				<h2 class="white">教育经历</h2>
+	<!-- education and languages -->
+	<section class="container">
+		<div class="row">
+			<div class="col-md-8 col-sm-12">
+				<div class="education">
+					<h2 class="white">教育经历</h2>
 					<div class="education-content">
-							<div class="education-school">
-					<!-- 
+						<div class="education-school">
+							<!-- 
 								<h5>School of Media</h5><span></span>
 								<h5>2030 January - 2034 December</h5>
 					
 						<h4 class="education-title accent">New Web Design</h4>
 					 -->
-							</div>
+						</div>
 						<p class="education-description">
-						<c:out value="${resume.ed_exp}"/>
+							<c:out value="${resume.ed_exp}" />
 						</p>
 					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-12">
+				<div class="contact">
+					<h2>联系方式</h2>
+					<p>
+						<i class="fa fa-map-marker"></i>
+						<c:out value="${resume.addr }" />
+					</p>
+					<p>
+						<i class="fa fa-phone"></i>
+						<c:out value="${resume.tel }" />
+					</p>
+					<p>
+						<i class="fa fa-envelope"></i>
+						<c:out value="${user.email}" />
+					</p>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-4 col-sm-12">
-			<div class="contact">
-				<h2>联系方式</h2>
-					<p><i class="fa fa-map-marker"></i><c:out value="${resume.addr }"/></p>
-					<p><i class="fa fa-phone"></i> <c:out value="${resume.tel }"/></p>
-					<p><i class="fa fa-envelope"></i> <c:out value="${user.email}"/></p>
-			</div>
-		</div>
-	</div>
-</section>
+	</section>
 
-<!-- contact and experience -->
-<section class="container">
-	<div class="row">
-		<!-- 
+	<!-- contact and experience -->
+	<section class="container">
+		<div class="row">
+			<!-- 
 		
 		<div class="col-md-4 col-sm-12">
 			<div class="languages">
@@ -152,11 +171,11 @@ pageContext.setAttribute("path", path);
 			</div>
 		</div>
 		 -->
-		<div class="col-md-12 col-sm-12">
-			<div class="experience">
-				<h2 class="white">工作经验</h2>
+			<div class="col-md-12 col-sm-12">
+				<div class="experience">
+					<h2 class="white">工作经验</h2>
 					<div class="experience-content">
-					<!-- 
+						<!-- 
 					
 						<h4 class="experience-title accent">Website Development</h4>
 						<h5>New Media Company</h5><span></span>
@@ -164,41 +183,46 @@ pageContext.setAttribute("path", path);
 					
 					 -->
 						<p class="education-description">
-						<c:out value="${resume.wk_exp}"/>
+							<c:out value="${resume.wk_exp}" />
 						</p>
 					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<!-- footer section -->
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<p>
-					<a  href="<c:url value="/resume?method=editResume" /> ">修改我的简历</a>
-					<a  href="<c:url value="/user?method=modifyPassword" /> ">更改密码</a>
-				</p>
-				<ul class="social-icons">
-					<li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-google-plus"></a></li>
-					<li><a href="#" class="fa fa-twitter"></a></li>
-					<li><a href="#" class="fa fa-dribbble"></a></li>
-					<li><a href="#" class="fa fa-github"></a></li>
-					<li><a href="#" class="fa fa-behance"></a></li>
-				</ul>
+	<!-- footer section -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<p>
+						<a class="btn btn-primary" href="<c:url value="/resume?method=editResume" /> ">修改简历</a>
+						<a class="btn btn-primary" href="<c:url value="/user?method=modifyPassword" /> ">更改密码</a>
+					</p>
+					<ul class="social-icons">
+						<li><a href="#" class="fa fa-facebook"></a></li>
+						<li><a href="#" class="fa fa-google-plus"></a></li>
+						<li><a href="#" class="fa fa-twitter"></a></li>
+						<li><a href="#" class="fa fa-dribbble"></a></li>
+						<li><a href="#" class="fa fa-github"></a></li>
+						<li><a href="#" class="fa fa-behance"></a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-</footer>
+	</footer>
 
-<!-- javascript js -->
-<script src="<c:url value="/assets/bootstrap/js/jquery.js"/>"></script>
-<script src="<c:url value="/assets/bootstrap/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resume/js/jquery.backstretch.min.js"/>"></script>
-<script src="<c:url value="/resume/js/custom.js"/>"></script>
+	<!-- javascript js -->
+	<script src="<c:url value="/assets/bootstrap/js/jquery.js"/>"></script>
+	<script src="<c:url value="/assets/bootstrap/js/bootstrap.min.js"/>"></script>
+	<script src="<c:url value="/resume/js/jquery.backstretch.min.js"/>"></script>
+	<script src="<c:url value="/resume/js/custom.js"/>"></script>
+	<script>
+		$(function(){
+			$("[data-toggle='popover']").popover();
+		});
+	</script>
 
 </body>
 </html>

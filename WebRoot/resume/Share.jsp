@@ -44,8 +44,8 @@ pageContext.setAttribute("path", path);
 				style="width:255px;height:255px;"
 				 alt="templatemo easy profile">
 				<hr>
-				<c:if test="${ not empty msg }"><h2 class="tm-title bold shadow">${msg}</h2></c:if>
-				<h1 class="tm-title bold shadow">你好, 我是 <c:out value="${resume.name }"/></h1>
+				<c:if test="${ not empty msg }"><h2 class="tm-title bold shadow">${msg}<jsp:forward page="/"/></h2></c:if>
+				<h1 class="tm-title bold shadow"> 你好, 我是 <c:out value="${resume.name }"/></h1>
 			</div>
 		</div>
 	</div>
