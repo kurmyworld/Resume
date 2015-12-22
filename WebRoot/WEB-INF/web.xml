@@ -4,29 +4,29 @@
   
 
   <servlet>
-    <servlet-name>VCode</servlet-name>
-    <servlet-class>com.chioy.servlet.common.VerifyCode</servlet-class>
+    <servlet-name>vcode</servlet-name>
+    <servlet-class>com.chioy.servlet.VerifyCode</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>Share</servlet-name>
-    <servlet-class>com.chioy.servlet.resume.Share</servlet-class>
+    <servlet-class>com.chioy.servlet.Share</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>UserServlet</servlet-name>
-    <servlet-class>com.chioy.servlet.user.UserServlet</servlet-class>
+    <servlet-class>com.chioy.servlet.UserServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ResumeServlet</servlet-name>
-    <servlet-class>com.chioy.servlet.resume.ResumeServlet</servlet-class>
+    <servlet-class>com.chioy.servlet.ResumeServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AdminServlet</servlet-name>
-    <servlet-class>com.chioy.servlet.admin.AdminServlet</servlet-class>
+    <servlet-class>com.chioy.servlet.AdminServlet</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>QuestionServlet</servlet-name>
-    <servlet-class>com.chioy.servlet.question.QuestionServlet</servlet-class>
+    <servlet-class>com.chioy.servlet.QuestionServlet</servlet-class>
   </servlet>
 
 
@@ -44,7 +44,7 @@
 
 
   <servlet-mapping>
-    <servlet-name>VCode</servlet-name>
+    <servlet-name>vcode</servlet-name>
     <url-pattern>/vcode</url-pattern>
   </servlet-mapping>
   <servlet-mapping>

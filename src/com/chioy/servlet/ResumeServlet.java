@@ -1,4 +1,4 @@
-package com.chioy.servlet.resume;
+package com.chioy.servlet;
 
 import java.io.IOException;
 
@@ -10,7 +10,6 @@ import com.chioy.domain.Resume;
 import com.chioy.domain.User;
 import com.chioy.exception.ResumeException;
 import com.chioy.service.ResumeService;
-import com.chioy.servlet.common.BaseServlet;
 
 import fr.chioy.utils.CommonUtils;
 

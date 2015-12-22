@@ -129,7 +129,7 @@
 										'<c:url value="/vcode?x="/>'
 												+ new Date().getTime());
 							});
-					$("#p2").change(function() {
+					$("#p2").mouseout(function() {
 						if ($("#p2").val() != $("#p1").val()) {
 							$("#info-pswd").removeClass("ticker");
 							$("#info-pswd").addClass("into");

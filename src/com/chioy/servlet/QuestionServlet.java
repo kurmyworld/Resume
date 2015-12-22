@@ -1,4 +1,4 @@
-package com.chioy.servlet.question;
+package com.chioy.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chioy.domain.Question;
 import com.chioy.service.QuestionService;
-import com.chioy.servlet.common.BaseServlet;
 
 public class QuestionServlet extends BaseServlet {
 
@@ -27,9 +26,5 @@ public class QuestionServlet extends BaseServlet {
 		return null;
 	}
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
 
 }

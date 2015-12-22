@@ -1,4 +1,4 @@
-package com.chioy.servlet.resume;
+package com.chioy.servlet;
 
 import java.io.IOException;
 

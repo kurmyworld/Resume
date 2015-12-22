@@ -1,4 +1,4 @@
-package com.chioy.servlet.user;
+package com.chioy.servlet;
 
 import java.io.IOException;
 
@@ -12,7 +12,6 @@ import com.chioy.exception.UserException;
 import com.chioy.exception.UserInfoException;
 import com.chioy.service.UserInfoService;
 import com.chioy.service.UserService;
-import com.chioy.servlet.common.BaseServlet;
 
 import fr.chioy.utils.CommonUtils;
 

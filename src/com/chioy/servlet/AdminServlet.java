@@ -1,4 +1,4 @@
-package com.chioy.servlet.admin;
+package com.chioy.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +12,6 @@ import com.chioy.domain.ConditionUser;
 import com.chioy.domain.User;
 import com.chioy.exception.AdminException;
 import com.chioy.service.AdminService;
-import com.chioy.servlet.common.BaseServlet;
 
 import fr.chioy.utils.CommonUtils;
 

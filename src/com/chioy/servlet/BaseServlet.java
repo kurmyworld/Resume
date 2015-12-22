@@ -1,4 +1,4 @@
-package com.chioy.servlet.common;
+package com.chioy.servlet;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
