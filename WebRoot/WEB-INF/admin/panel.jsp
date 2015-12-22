@@ -12,6 +12,8 @@
 <title>用户管理</title>
 <link href='<c:url value="/assets/bootstrap/css/bootstrap.min.css"/>'
 	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href='<c:url value="/assets/bootstrap/plugins/artDialog/css/ui-dialog.css"/>'>
 </head>
 <body>
 	<div class="container">
@@ -45,26 +47,6 @@
 					</tr>
 				</thead>
 				<tbody id="tbody-content">
-				<!-- 
-					<tr>
-						<td>chioy@foxmail.com</td>
-						<td>chioy</td>
-						<td><a class="btn btn-xs btn-primary">查看</a> <a
-							class="btn btn-xs btn-danger">删除</a></td>
-					</tr>
-					<tr>
-						<td>741297479@qq.com</td>
-						<td>Bangalore</td>
-						<td><a class="btn btn-xs btn-primary">查看</a> <a
-							class="btn btn-xs btn-danger">删除</a></td>
-					</tr>
-					<tr>
-						<td>a@b.com</td>
-						<td>Pune</td>
-						<td><a class="btn btn-xs btn-primary">查看</a> <a
-							class="btn btn-xs btn-danger">删除</a></td>
-					</tr>
-					 -->
 				</tbody>
 			</table>
 		</div>
@@ -81,27 +63,80 @@
 			</ul>
 		</div>
 
-
-
 	</div>
 	<script src='<c:url value="/assets/bootstrap/js/jquery.js"/>'></script>
 	<script src='<c:url value="/assets/bootstrap/js/bootstrap.min.js"/>'></script>
+	<!-- 
+	<script src='<c:url value="/assets/bootstrap/plugins/artDialog/lib/jquery-1.10.2.js" /> '></script>
+	 -->
+	<script
+		src='<c:url value="/assets/bootstrap/plugins/artDialog/dist/dialog-min.js" />'></script>
+
 	<script>
 		$(document).ready(function() {
+			search();
 			$("#search").click(function() {
-				var tbody = $.ajax({
-					async : false,
-					cache : false,
-					type : 'post',
-					url : '<c:url value="/admin?method=query"/>',
-					data : {
-						'username' : $("#username").val(),
-						'email' : $("#email").val(),
-					}
-				}).responseText;
-				$("#tbody-content").html(tbody);
+				search();
 			});
 		});
+	</script>
+	<script>
+		function deleteUser(uid) {
+			var msg = $.ajax({
+				async : false,
+				cache : false,
+				type : 'post',
+				url : '<c:url value="/admin?method=delUser"/>',
+				data : {
+					id : uid,
+				}
+			}).responseText;
+			return msg;
+		}
+		function del(uid,id) {
+			var d = dialog({
+				title : '提示',
+				content : '你确定删除此用户吗？他的简历信息也将被删除无法还原！',
+				okValue : '确定',
+				ok : function() {
+					//tip(deleteUser(uid));
+				var element = document.getElementById(id);
+				tip(deleteUser(uid));
+				remove(element);
+					return true;
+				},
+				cancelValue : '取消',
+				cancel : function() {
+					tip("您取消了操作。");
+				}
+			});
+			d.show();
+		}
+		function tip(msg) {
+			var d = dialog({
+				content : msg
+			});
+			d.show();
+			setTimeout(function() {
+				d.close().remove();
+			}, 2000);
+		}
+		function search(){
+			var tbody = $.ajax({
+				async : false,
+				cache : false,
+				type : 'post',
+				url : '<c:url value="/admin?method=query"/>',
+				data : {
+					'username' : $("#username").val(),
+					'email' : $("#email").val(),
+				}
+			}).responseText;
+			$("#tbody-content").html(tbody);
+		}
+		function remove(element){
+			element.remove();
+		}
 	</script>
 </body>
 </html>

@@ -64,5 +64,27 @@ public class UserService {
 		}
 		return user;
 	}
+	public int deleteByUsername(String username) throws UserException{
+		if(username==null||username.trim().isEmpty()){
+			throw new UserException("啥啥啥？你要删除谁？？");
+		}
+		int del = userDao.deleteByUsername(username);
+		if(del == 0){
+			throw new UserException("没这个人，白做了！");
+		}else{
+			return del;
+		}
+	}
+	public int deleteById(int id) throws UserException{
+		if(id==0){
+			throw new UserException("啥啥啥？你要删除谁？？");
+		}
+		int del = userDao.deleteById(id);
+		if(del == 0){
+			throw new UserException("没这个人，白做了！");
+		}else{
+			return del;
+		}
+	}
 	
 }

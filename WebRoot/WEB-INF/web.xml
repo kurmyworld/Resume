@@ -5,7 +5,7 @@
 
   <servlet>
     <servlet-name>vcode</servlet-name>
-    <servlet-class>com.chioy.utils.VerifyCode</servlet-class>
+    <servlet-class>fr.chioy.utils.VerifyCode</servlet-class>
   </servlet>
 
   <servlet>

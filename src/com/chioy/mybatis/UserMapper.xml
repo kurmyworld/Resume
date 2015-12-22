@@ -39,4 +39,8 @@
   		use resume
   		delete users where uid = #{uid}
   	</delete>
+  	<delete id="deleteByUsername">
+  		use resume
+  		delete users where username = #{username}
+  	</delete>
   </mapper>

@@ -64,4 +64,11 @@ public class UserDao {
 		session.close();
 		return user;
 	}
+	public int deleteByUsername(String username){
+		String alter = "deleteByUsername";
+		SqlSession session = MybatisUtils.getSqlSession();
+		String statement = "com.chioy.mybatis.UserMapper."+alter;
+		int del = session.delete(statement, username);
+		return del;
+	}
 }
