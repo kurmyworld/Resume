@@ -1,4 +1,4 @@
-package com.chioy.servlet;
+package fr.chioy.utils;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
