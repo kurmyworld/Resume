@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="key">
 					<input type="password" required="required" name="userpswd" placeholder="请输入密码" />
 						</div>
-						<c:if test="${not empty msg }"><div class="alert alert-info">${msg }</div></c:if>
+						<c:if test="${not empty msg }"><div class="alert alert-info">${msg }或者<a href='<c:url value="/"/> '>注册一个</a></div></c:if>
 			<div class="signin">
 				<input type="submit" value="登陆" />
 			</div>

@@ -25,7 +25,7 @@
 		<div class="header">
 			<h1>登陆或者创建一个账户</h1>
 		</div>
-		<p>管理你的个人简历（其实就是个实训作业）</p>
+		<p>管理你的个人简历</p>
 		<form action="<c:url value="/User?method=regist"/>" method="post"
 			onsubmit="return checkReg();">
 			<ul class="left-form">
